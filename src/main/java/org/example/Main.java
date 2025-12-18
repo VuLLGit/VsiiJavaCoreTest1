@@ -15,6 +15,7 @@ public class Main {
         list.add("VietSoftw@re@vsi-international.com");
         list.add("@@@gmail.com");
 
-        System.out.println(FilterString.filter(list));
+        FilterString filter = new FilterString();
+        System.out.println(filter.filter(list));
     }
 }
