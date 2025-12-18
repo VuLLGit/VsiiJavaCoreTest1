@@ -14,27 +14,27 @@ public class FilterString {
         // khai báo
         ArrayList<String> result = new ArrayList<>();
         int lastAt;
-        String beforeAt;
+        String tempString;
 
         for (String s : list) {
             if (s.contains("@")) {
                 lastAt = s.lastIndexOf("@");
-                beforeAt = s.substring(0, lastAt + 1);
+                tempString = s.substring(0, lastAt + 1);
 
                 // loại bỏ mọi ký tự @ phía trước trừ phần cuối
-                for (int i = 0; i < beforeAt.length() - 1; i++) {
+                for (int i = 0; i < tempString.length() - 1; i++) {
                     // sau khi substring loại bỏ @ thì phải lùi một index để tránh bỏ qua các @ liền kề nhau
-                    if (beforeAt.charAt(i) == '@') {
-                        beforeAt = beforeAt.substring(0, i) + beforeAt.substring(i + 1);
+                    if (tempString.charAt(i) == '@') {
+                        tempString = tempString.substring(0, i) + tempString.substring(i + 1);
                         i--;
                     }
                 }
 
                 // kiểm tra xem sau @ còn ký tự không
                 if (lastAt == s.length() - 1) {
-                    result.add(beforeAt);
+                    result.add(tempString);
                 } else {
-                    result.add(beforeAt + AFTERSTRING);
+                    result.add(tempString + AFTERSTRING);
                 }
             }
         }
