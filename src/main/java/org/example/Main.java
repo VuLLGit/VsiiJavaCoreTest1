@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.service.impl.StringServiceImpl;
+import org.example.service.StringService;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -15,8 +18,8 @@ public class Main {
         list.add("VietSoftw@re@vsi-international.com");
         list.add("@@@gmail.com");
 
-        FilterString filter = new FilterString();
-        System.out.println(filter.process(list));
+        StringService stringService = new StringServiceImpl();
+        System.out.println(stringService.filterEmail(list));
     }
 }
 

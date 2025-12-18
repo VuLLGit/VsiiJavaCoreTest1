@@ -1,11 +1,15 @@
-package org.example;
+package org.example.service.impl;
+
+import org.example.service.StringService;
 
 import java.util.ArrayList;
 
-/**
- * Lớp cung cấp chức năng xử lý chuỗi liên quan đến ký tự '@'.
- */
-public class FilterString {
+public class StringServiceImpl implements StringService {
+    private static final String THREE_DOTS = "...";
+    private static final String AT = "@";
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+    private static final String EMPTY_STRING = "";
 
     /**
      * Xử lý từng chuỗi trong danh sách đầu vào có chứa ký tự '@'.
@@ -19,7 +23,8 @@ public class FilterString {
      * Returns:
      * Danh sách chuỗi sau khi xử lý; trả về null nếu danh sách đầu vào là null
      */
-    public ArrayList<String> process(ArrayList<String> list) {
+    @Override
+    public ArrayList<String> filterEmail(ArrayList<String> list) {
         if (list == null) {
             return null;
         }
@@ -29,13 +34,13 @@ public class FilterString {
         String tempString;
 
         for (String s : list) {
-            if (s.contains(Constants.AT)) {
-                lastAt = s.lastIndexOf(Constants.AT);
-                tempString = s.substring(Constants.ZERO, lastAt).replace(Constants.AT, Constants.EMPTY_STRING);
-                if (lastAt == s.length() - Constants.ONE) {
-                    result.add(tempString + Constants.AT);
+            if (s.contains(AT)) {
+                lastAt = s.lastIndexOf(AT);
+                tempString = s.substring(ZERO, lastAt).replace(AT, EMPTY_STRING);
+                if (lastAt == s.length() - ONE) {
+                    result.add(tempString + AT);
                 } else {
-                    result.add(tempString + Constants.AT + Constants.THREE_DOTS);
+                    result.add(tempString + AT + THREE_DOTS);
                 }
             }
         }
