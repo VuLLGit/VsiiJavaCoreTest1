@@ -7,7 +7,7 @@ public class FilterString {
     // sử dụng để lấy @ cuối cùng và loại bỏ toàn bộ ký tự phía sau nó thành "..."
     public ArrayList<String> process(ArrayList<String> list) {
         if (list == null) {
-            throw new IllegalArgumentException("list must not be null");
+            return null;
         }
 
         ArrayList<String> result = new ArrayList<>();
