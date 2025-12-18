@@ -2,9 +2,23 @@ package org.example;
 
 import java.util.ArrayList;
 
+/**
+ * Lớp cung cấp chức năng xử lý chuỗi liên quan đến ký tự '@'.
+ */
 public class FilterString {
 
-    // sử dụng để lấy @ cuối cùng và loại bỏ toàn bộ ký tự phía sau nó thành "..."
+    /**
+     * Xử lý từng chuỗi trong danh sách đầu vào có chứa ký tự '@'.
+     * Phương thức sẽ loại bỏ các ký tự '@' dư thừa phía trước,
+     * giữ lại vị trí '@' cuối cùng và thêm '@' hoặc '@...'
+     * tùy theo việc sau '@' cuối cùng còn ký tự hay không.
+     *
+     * Params:
+     * list – Danh sách chuỗi cần xử lý
+     *
+     * Returns:
+     * Danh sách chuỗi sau khi xử lý; trả về null nếu danh sách đầu vào là null
+     */
     public ArrayList<String> process(ArrayList<String> list) {
         if (list == null) {
             return null;
@@ -17,22 +31,11 @@ public class FilterString {
         for (String s : list) {
             if (s.contains(Constants.AT)) {
                 lastAt = s.lastIndexOf(Constants.AT);
-                tempString = s.substring(0, lastAt + 1);
-
-                // loại bỏ mọi ký tự @ phía trước trừ phần cuối
-                for (int i = 0; i < tempString.length() - 1; i++) {
-                    // sau khi substring loại bỏ @ thì phải lùi một index để tránh bỏ qua các @ liền kề nhau
-                    if (String.valueOf(tempString.charAt(i)).equals(Constants.AT)) {
-                        tempString = tempString.substring(0, i) + tempString.substring(i + 1);
-                        i--;
-                    }
-                }
-
-                // kiểm tra xem sau @ còn ký tự không
-                if (lastAt == s.length() - 1) {
-                    result.add(tempString);
+                tempString = s.substring(Constants.ZERO, lastAt).replace(Constants.AT, Constants.EMPTY_STRING);
+                if (lastAt == s.length() - Constants.ONE) {
+                    result.add(tempString + Constants.AT);
                 } else {
-                    result.add(tempString + Constants.AFTER_STRING);
+                    result.add(tempString + Constants.AT + Constants.THREE_DOTS);
                 }
             }
         }

@@ -19,3 +19,5 @@ public class Main {
         System.out.println(filter.process(list));
     }
 }
+
+
