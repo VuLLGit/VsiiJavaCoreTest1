@@ -12,16 +12,8 @@ public class StringServiceImpl implements StringService {
     private static final String EMPTY_STRING = "";
 
     /**
-     * Xử lý từng chuỗi trong danh sách đầu vào có chứa ký tự '@'.
-     * Phương thức sẽ loại bỏ các ký tự '@' dư thừa phía trước,
-     * giữ lại vị trí '@' cuối cùng và thêm '@' hoặc '@...'
-     * tùy theo việc sau '@' cuối cùng còn ký tự hay không.
-     *
-     * Params:
-     * list – Danh sách chuỗi cần xử lý
-     *
-     * Returns:
-     * Danh sách chuỗi sau khi xử lý; trả về null nếu danh sách đầu vào là null
+     * Triển khai filterEmail(ArrayList<String> List.
+     * Việc triển khai này tuân theo quy tắc che giấu '@' cuối cùng.
      */
     @Override
     public ArrayList<String> filterEmail(ArrayList<String> list) {
