@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class FilterString {
     private static final String AFTERSTRING = "...";
+    private static final String AT = "@";
 
     // sử dụng để lấy @ cuối cùng và loại bỏ toàn bộ ký tự phía sau nó thành "..."
     public ArrayList<String> process(ArrayList<String> list) {
@@ -17,14 +18,14 @@ public class FilterString {
         String tempString;
 
         for (String s : list) {
-            if (s.contains("@")) {
-                lastAt = s.lastIndexOf("@");
+            if (s.contains(AT)) {
+                lastAt = s.lastIndexOf(AT);
                 tempString = s.substring(0, lastAt + 1);
 
                 // loại bỏ mọi ký tự @ phía trước trừ phần cuối
                 for (int i = 0; i < tempString.length() - 1; i++) {
                     // sau khi substring loại bỏ @ thì phải lùi một index để tránh bỏ qua các @ liền kề nhau
-                    if (tempString.charAt(i) == '@') {
+                    if (String.valueOf(tempString.charAt(i)).equals(AT)) {
                         tempString = tempString.substring(0, i) + tempString.substring(i + 1);
                         i--;
                     }
