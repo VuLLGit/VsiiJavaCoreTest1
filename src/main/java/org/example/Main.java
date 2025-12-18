@@ -16,6 +16,6 @@ public class Main {
         list.add("@@@gmail.com");
 
         FilterString filter = new FilterString();
-        System.out.println(filter.filter(list));
+        System.out.println(filter.process(list));
     }
 }

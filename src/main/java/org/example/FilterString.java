@@ -6,7 +6,7 @@ public class FilterString {
     private static final String AFTERSTRING = "...";
 
     // sử dụng để lấy @ cuối cùng và loại bỏ toàn bộ ký tự phía sau nó thành "..."
-    public ArrayList<String> filter(ArrayList<String> list) {
+    public ArrayList<String> process(ArrayList<String> list) {
         // check null
         if (list == null) {
             throw new IllegalArgumentException("list must not be null");
